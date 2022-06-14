@@ -1,0 +1,19 @@
+# Main compute configuration.
+compute:
+  # Add cloud configuration here.
+  provider:
+    cluster: prod-2           # Cluster ID
+
+  # Training configuration.
+  train:
+    cpus: 4                       # Number of CPUs
+    gpus: 1                       # Number of GPUs
+    instance: g4dn.xlarge         # AWS instance type
+    datastore_name: mnist-fashion # Datastore name to use
+    datastore_version: 3          # Datastore version number
+    datastore_mount_dir: /datastores # Where to mount the datastore
+    use_spot: false               # If we should use spot instances
+    framework: lightning        # Which framework to use
+    dependency_file_info:         
+      package_manager: conda        # Either conda or pip
+      path: env.yml                  # Path to the reqs or conda env
